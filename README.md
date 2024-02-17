@@ -31,9 +31,31 @@ Once you have connected over SSH, you can find the following tools in the `tools
 
 There is also a `wordlists` folder that only contains the `rockyou.txt` wordlist. If you would like to add your own wordlists then view the below section for creating your own docker hub repo and runpod template
 
-# Add custom wordlist and push to docker.hub
+# Add custom wordlist 
+
+To add your own wordlists to the container you need to create your own dockerhub repo and create your own runpod template to pull said repo.
+
+First clone the above repo and mv/cp your wordlist(s) to the `wordlists` folder.
+
+Next build the image:
+
+```
+docker build --tag <dockerhub-username>/<repo-name>:<tag> .
+```
+
+Next push the image to docker hub:
+```
+docker push <dockerhub-username>/<repo-name>:<tag>
+```
+
+Now create a custom Template on runpod to use your docker hub repo, navigate to Templates and click "+ New Template"
+
+Add the following:
+- Template Name
+- Container image - The one you created with the previous command
+- Expose TCP Ports - 22
+
+Save the Template, and follow the same steps mentioned above: [Setting up runpod](#Setting-up-runpod)
 
 
-
-
-
+Happy cracking
