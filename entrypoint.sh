@@ -4,4 +4,5 @@
 echo "$PUBLIC_KEY" >> /root/.ssh/authorized_keys
 chmod 700 /root/.ssh/authorized_keys
 service ssh start
-sleep infinity
+
+sleep infinity # Needed to keep container open
