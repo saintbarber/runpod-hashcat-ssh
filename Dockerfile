@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.0-devel-ubuntu22.04
+FROM nvidia/cuda:12.1.1-devel-ubuntu22.04
 
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 
@@ -21,11 +21,6 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ################################ end nvidia opencl driver ################################
 
-# ENV HASHCAT_VERSION        v6.2.6
-# ENV HASHCAT_UTILS_VERSION  v1.9
-# ENV HCXTOOLS_VERSION       6.2.7
-# ENV HCXDUMPTOOL_VERSION    6.2.7
-# ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
