@@ -24,7 +24,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
-    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev pciutils
+    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev pciutils libpcap-dev
 
 # Fetch PCI IDs list to display proper GPU names
 RUN update-pciids
@@ -47,9 +47,12 @@ RUN ln -s /root/kwprocessor/kwp /usr/bin/kwp
 # Add wordlists folder
 WORKDIR /root
 ADD wordlists wordlists
+ADD rules rules
 
 # Install SSH server 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install openssh-server -y; mkdir -p /root/.ssh; chmod 700 /root/.ssh
+
+RUN apt-get install 7zip
 
 COPY entrypoint.sh /entrypoint.sh
 
