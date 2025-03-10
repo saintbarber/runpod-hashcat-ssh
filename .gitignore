@@ -1,1 +1,3 @@
 wordlists/*
+rules/
+hashcat.potfile
